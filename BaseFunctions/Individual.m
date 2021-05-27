@@ -59,8 +59,8 @@ classdef Individual
             offspring(2).jonesVector = jones(offspring(2).genotype);
             offspring(1).fitness = experiment(offspring(1).jonesVector, s);
             offspring(2).fitness = experiment(offspring(2).jonesVector, s);
-            offspring(1).phenotype = etokes(offspring(1).genotype);
-            offspring(2).phenotype = etokes(offspring(2).genotype);
+            offspring(1).phenotype = stokes(offspring(1).genotype);
+            offspring(2).phenotype = stokes(offspring(2).genotype);
         end
         
     end

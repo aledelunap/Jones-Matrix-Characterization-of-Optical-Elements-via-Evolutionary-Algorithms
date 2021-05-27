@@ -34,9 +34,9 @@ rng(seedk)
 % Evolutionary Algorithm
 
 % Initial population
-population = individual.empty(mu,0);    % Population matrix
+population = Individual.empty(mu,0);    % Population matrix
 for j = 1:mu                            % Initialize Population
-    population(j) = individual;
+    population(j) = Individual;
     population(j) = population(j).individualConstructor(s);
 end
 
@@ -58,7 +58,7 @@ end
 if evolution == 1
     for i = 1:maxi
         
-        offspring =  individual.empty(lambda,0);    % Init offspring array
+        offspring =  Individual.empty(lambda,0);    % Init offspring array
         
         % Mutation
         for j = 1:lambda
@@ -69,7 +69,7 @@ if evolution == 1
                 offspring(j) = population(c);
             end
             
-            offspring(j) = motor_step(offspring(j));     % Motor 
+            offspring(j) = motorStep(offspring(j));     % Motor 
             
         end
 
