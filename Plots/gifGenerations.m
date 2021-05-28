@@ -47,7 +47,7 @@ for j = 1:mu:length(generations)
     xlabel('S_1')
     ylabel('S_2')
     zlabel('S_3')
-    view(135,25)
+    view(45,25)
     set(gca, 'FontName', 'Times', 'FontSize', 22)
     set(gcf,'color','w');
     axis equal

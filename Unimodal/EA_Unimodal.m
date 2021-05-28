@@ -1,4 +1,4 @@
-function [i, measures, generations] = EA_Unimodal(s, mu, lambda, maxi, pm, etam, lower, upper, seedk)
+function [i, measures, generations] = EA_Unimodal(s, mu, lambda, maxEvals, pm, etam, lower, upper, seedk)
 %  
 % Filename:
 %    EA_Unimodal
@@ -10,7 +10,7 @@ function [i, measures, generations] = EA_Unimodal(s, mu, lambda, maxi, pm, etam,
 %    sample - (double) Sample
 %    mu - (double) Number of individuals per generation
 %    lambda - (double) Number of offspring per generation
-%    maxi - (double) Maximum number of iterations
+%    maxEvals - (double) Maximum number of evaluations
 %    pm - (double) Probability of mutation
 %    etam - (double) PM pertubation parameter
 %    lower - (double) Lower bounds for beta and alpha respectively
@@ -53,6 +53,9 @@ evolution = 1;
 if  abs(1 - population(1).fitness) <= 10^(-4)       % Fitness termination criteria
     evolution = 0;
 end
+
+% Define maximum possible number of iterations
+maxi = floor((maxEvals-mu)/lambda);
         
 % Evolution cycle
 if evolution == 1

@@ -1,20 +1,17 @@
-function [J] = sample(s,J)
+function QHQ = QHQ(angles)
 %  
 % Filename:
-%    sample
+%    QHQ
 %
 % Description:
-%    Calculate the resultant Jones vector given by the interaction of a 
-%    sample and a Jones vector
+%    Calculate the resultant Jones matrix of the QHQ sample given a set of
+%    angles
 %
 % Inputs:
-%    s - (double) Angles for the QHQ sample
-%    J - (double) Input Jones vector
+%    angles - (double) Angles for the QHQ sample
 %
 % Outputs:
-%    J - (double) Output Jones vector
-%
-% See also: jones.m
+%    QHQ - (double) Jones matrix
 %
 % Author: Alejandra De Luna Pámanes
 % email: aledelunap@gmail.com
@@ -35,6 +32,6 @@ LR = @(delta,theta) exp(1i*delta/2)*[exp(-1i*delta/2).*(cos(theta).^2)+exp(1i*de
 % Quarter- and half-wave plates
 % Q: LR(pi/2, theta)
 % H: LR(pi, theta)
-J = LR(pi/2,s(1))*LR(pi,s(2))*LR(pi/2,s(3))*J;
+QHQ = LR(pi/2,angles(1))*LR(pi,angles(2))*LR(pi/2,angles(3));
 
 end

@@ -1,4 +1,4 @@
-function [i, measures, generations] = GA_Unimodal(sample, mu, lambda, maxi, pc, pm, etac, etam, lower, upper, seedk)
+function [i, measures, generations] = GA_Unimodal(sample, mu, lambda, maxEvals, pc, pm, etac, etam, lower, upper, seedk)
 %  
 % Filename:
 %    GA_Unimodal
@@ -7,10 +7,10 @@ function [i, measures, generations] = GA_Unimodal(sample, mu, lambda, maxi, pc, 
 %    Genetic Algorithm with polynomial mutation (PM) and simulated binary crossover (SBX)
 %
 % Inputs:
-%    sample - (double) Sample
+%    sample - (double) Jones matrix of the sample
 %    mu - (double) Number of individuals per generation
 %    lambda - (double) Number of offspring per generation
-%    maxi - (double) Maximum number of iterations
+%    maxEvals - (double) Maximum number of evaluations
 %    pc - (double) Probability of crossover
 %    pm - (double) Probability of mutation
 %    etac - (double) SBX pertubation parameter
@@ -57,6 +57,9 @@ if  abs(1 - population(1).fitness) <= 10^(-4)       % Fitness termination criter
     evolution = 0;
 end
         
+% Define maximum possible number of iterations
+maxi = floor((maxEvals-mu)/lambda);
+
 % Evolution cycle
 if evolution == 1
     for i = 1:maxi

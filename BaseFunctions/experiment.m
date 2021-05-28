@@ -1,4 +1,4 @@
-function [V] = experiment(J,s)
+function [V] = experiment(J,sample)
 %  
 % Filename:
 %    experiment
@@ -10,7 +10,7 @@ function [V] = experiment(J,s)
 %
 % Inputs:
 %    J - (double) Jones vector
-%    s - (double) Sample angles for the QHQ
+%    sample - (double) Jones matric of the sample
 %
 % Outputs:
 %    V - (double) Interferometric visibility
@@ -33,7 +33,7 @@ Tx = BS(2,1)*J(1); % Transmited beam
 Ty = BS(2,2)*J(2);
 
 % Sample
-T = sample(s,[Tx;Ty]);
+T = sample*[Tx;Ty];
 
 % Second BS
 TRx = BS(1,1)*T(1); % Reflected beam

@@ -35,30 +35,30 @@ classdef Individual
     methods
         
         % Initialize
-        function individual = individualConstructor(individual, s)
+        function individual = individualConstructor(individual, sample)
             % Bounds
             % [beta in (-45, 45); alpha in (-45, 45)]
             individual.genotype = [90*rand() - 45; 90*rand() - 45];
             individual.phenotype = stokes(individual.genotype);
             individual.jonesVector = jones(individual.genotype);
-            individual.fitness = experiment(individual.jonesVector, s);
+            individual.fitness = experiment(individual.jonesVector, sample);
         end
         
         % Mutation
-        function individual = mutate(individual, s, etam, lower, upper)
+        function individual = mutate(individual, sample, etam, lower, upper)
             individual = pmMutation(individual, etam, lower, upper);
             individual.jonesVector = jones(individual.genotype);
-            individual.fitness = experiment(individual.jonesVector, s);
+            individual.fitness = experiment(individual.jonesVector, sample);
             individual.phenotype = stokes(individual.genotype);
         end
         
         % Crossover
-        function offspring = crossover(individual, mate, s, etac, lower, upper)
+        function offspring = crossover(individual, mate, sample, etac, lower, upper)
             offspring = sbxCrossover([individual, mate], etac, lower, upper);
             offspring(1).jonesVector = jones(offspring(1).genotype);
             offspring(2).jonesVector = jones(offspring(2).genotype);
-            offspring(1).fitness = experiment(offspring(1).jonesVector, s);
-            offspring(2).fitness = experiment(offspring(2).jonesVector, s);
+            offspring(1).fitness = experiment(offspring(1).jonesVector, sample);
+            offspring(2).fitness = experiment(offspring(2).jonesVector, sample);
             offspring(1).phenotype = stokes(offspring(1).genotype);
             offspring(2).phenotype = stokes(offspring(2).genotype);
         end
