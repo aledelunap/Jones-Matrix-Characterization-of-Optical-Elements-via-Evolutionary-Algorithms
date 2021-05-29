@@ -6,6 +6,6 @@ We implemented the EAs using a real-valued representation. Both the EA and the G
 
 We provide two files to exemplify the use of our code: exampleEA.m and exampleGA.m. In both files, the different parameters may be varied and the resulting evolution process is plotted at the end to observe how the population evolves over the Poincaré sphere. For instance, the following gif shows an evolution of the (8 + 2) EA:
 
-<p align="center"><img src="EA(8_2)_eta_100_622.gif " width=400></p>
+<p align="center"><img src="EA(8_2)_eta_100_622.gif " width=500></p>
 
 This MATLAB implementation corresponds to the code used in <a href="https://arxiv.org/abs/2101.12293">Jones Matrix Characterization of Optical Elements via Evolutionary Algorithms </a>.
